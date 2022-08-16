@@ -1,61 +1,6 @@
 // Variables
 @import 'variables';
 
-// Tabler
-@import 'tabler/scss/all';
+@import 'bootstrap';
 
-.center-box{
-    margin: 0 auto;
-}
-
-#layout{
-    padding: 0;
-}
-#sidebar{
-    background-color: #343a40;
-
-    a:link,
-    a:visited,
-    a:hover,
-    a:active{
-        color: gray;
-        text-decoration: none;
-    }
-}
-.logout-btn{
-    padding: 0.5rem;
-}
-#menu{
-    .menu-item a:hover,
-    .menu-item a:focus,
-    .menu-item-selected,
-    .menu-item-selected a {
-        color: white;
-    }
-}
-
-.content-wrapper{
-    width: 100%;
-    min-height: calc(100vh - calc(2rem + 2.1rem) - 1px  );
-
-    .create-btn{
-        float: right;
-    }
-}
-
-.content{
-    .header{
-        border-bottom: 1px solid lightgray;
-    }
-    .title{
-        font-size: 1.2rem;
-        font-weight: 700;
-        display: inline-block;
-    }
-    .list-table{
-        width:100%;
-        .table-actions{
-            width: 250px;
-        }
-    }
-}
+@import '@tabler/core/dist/css/tabler';

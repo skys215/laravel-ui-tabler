@@ -1,69 +1,88 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>{{ config('app.name') }}</title>
-
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
 </head>
-<body>
-    <div id="main" class="grd">
-        <div class="header grd-row txt--center my2">
-            <div class="grd-row-col-6">
-                <h1>{{ config('app.name') }}</h1>
-            </div>
+<body class="d-flex flex-column">
+    <div class="page page-center">
+      <div class="container-tight py-4">
+        <div class="text-center mb-4">
+          <a href="{{ url('/') }}" class="navbar-brand navbar-brand-autodark">{{ config('app.name') }}</a>
         </div>
-        <div class="content grd-row">
-            <div class="grd-row-col-2-6 center-box">
-                <p>{{ __('auth.login') }}</p>
 
-                @error('email')
-                <aside class="fnt--white bg--red p1 my1">
-                    <p><strong>ERROR</strong>: {{ $message }}</p>
-                </aside>
-                @enderror
+        @if(!empty($errors))
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                  <div class="card mb-2">
+                    <div class="card-status-top bg-danger"></div>
+                    <div class="card-body">
+                      <p>{{ $error }}</p>
+                    </div>
+                  </div>
+                @endforeach
+            @endif
+        @endif
+
+        <form class="card card-md" action="{{ route('login') }}" method="POST" autocomplete="off">
+          @csrf
+
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4">Login to your account</h2>
+            <div class="mb-3">
+              <label class="form-label">Email address</label>
+              <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email" autocomplete="off" value="{{ old('email') }}">
+
+              @error('email')
+                <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
+            </div>
+
+            <div class="mb-2">
+              <label class="form-label">
+                Password
+                <span class="form-label-description">
+                  <a href="{{ route('password.request') }}">I forgot password</a>
+                </span>
+              </label>
+              <div class="input-group input-group-flat">
+                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password"  autocomplete="off">
+                <span class="input-group-text">
+                  <a href="#" class="link-secondary" title="Show password" data-bs-toggle="tooltip"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="2" /><path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" /></svg>
+                  </a>
+                </span>
                 @error('password')
-                <aside class="fnt--white bg--red p1 my1">
-                    <p><strong>ERROR</strong>: {{ $message }}</p>
-                </aside>
+                    <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
-
-                <form action="{{ route('login') }}" method="POST" role="form" class="p2 brdr--mid-gray">
-                    @csrf
-                    <label for="email">{{ __('auth.email') }}</label>
-                    <input type="email" name="email" placeholder="{{ __('auth.email') }}" value="{{ old('email') }}">
-
-                    <label for="password">{{ __('auth.password') }}</label>
-                    <input type="password" name="password" placeholder="{{ __('auth.password') }}" value="">
-
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember" class="pure-checkbox">{{ __('auth.remember_me') }}</label>
-
-                    <p class="txt--center">
-                        <button type="submit" class="btn--blue">{{ __('auth.sign_in') }}</button>
-                    </p>
-
-                    <p class="txt--center">
-                        <a href="{{ route('password.request') }}">{{ __('auth.login.forgot_password') }}</a>
-                        <a href="{{ route('register') }}">{{ __('auth.login.register_membership') }}</a>
-                    </p>
-                </form>
+              </div>
             </div>
-        </div>
 
-        <div class="footer grd-row">
-            <div class="grd-row-col-6 txt--center">
-                <p>Copyright &copy; 2022 <a href="{{ url('/') }}">{{ config('app.name') }}</a>. All rights reserved.</p>
+            <div class="mb-2">
+              <label class="form-check">
+                <input type="checkbox"  name="remember" class="form-check-input"/>
+                <span class="form-check-label">Remember me on this device</span>
+              </label>
             </div>
+
+            <div class="form-footer">
+              <button type="submit" class="btn btn-primary w-100">Sign in</button>
+            </div>
+          </div>
+        </form>
+        <div class="text-center text-muted mt-3">
+          Don't have account yet? <a href="{{ route('register') }}" tabindex="-1">Sign up</a>
         </div>
+        <div class="text-center text-muted mt-3">
+          Forgot your password? <a href="{{ route('password.request') }}" tabindex="-1">Reset password</a>
+        </div>
+      </div>
     </div>
-
 <script src="{{ mix('js/app.js') }}"></script>
 
 </body>

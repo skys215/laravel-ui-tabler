@@ -33,7 +33,9 @@ class TablerPreset extends Preset
     protected static function updatePackageArray(array $packages)
     {
         return [
-            'tabler'     => '^2.4.0',
+            '@popperjs/core' => '^2.11.5',
+            '@tabler/core'=> '^1.0.0-beta11',
+            'bootstrap'   => '5.2.0',
             'sass'        => '^1.15.2',
             'sass-loader' => '^8.0.0',
         ] + $packages;

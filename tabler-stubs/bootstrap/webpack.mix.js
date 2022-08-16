@@ -12,4 +12,12 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .extract([
+        // Extract packages from node_modules to vendor.js
+        '@tabler',
+        'bootstrap/dist/js/bootstrap.bundle.js',
+        // 'jquery',
+        // 'popper',
+    ])
     .sass('resources/sass/app.scss', 'public/css');
+

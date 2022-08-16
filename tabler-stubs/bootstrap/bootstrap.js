@@ -6,13 +6,13 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
-// try {
-//     window.Popper = require('popper.js').default;
-//     window.$ = window.jQuery = require('jquery');
+try {
+    // window.Popper = require('popper.js').default;
+    window.$ = window.jQuery = require('jquery');
 
-//     require('bootstrap');
-// } catch (e) {
-// }
+    // require('bootstrap');
+} catch (e) {
+}
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

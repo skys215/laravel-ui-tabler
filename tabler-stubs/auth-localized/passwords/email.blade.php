@@ -1,67 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>{{ config('app.name') }}</title>
-
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
 </head>
-<body>
-    <div id="main" class="grd">
-        <div class="header grd-row txt--center my2">
-            <div class="grd-row-col-6">
-                <h1>{{ config('app.name') }}</h1>
-            </div>
+<body class="d-flex flex-column">
+    <div class="page page-center">
+      <div class="container-tight py-4">
+        <div class="text-center mb-4">
+          <a href="{{ url('/') }}" class="navbar-brand navbar-brand-autodark">{{ config('app.name') }}</a>
         </div>
-        <div class="content grd-row">
-            <div class="grd-row-col-2-6 center-box">
 
-                @if (session('status'))
-                    <div class="fnt--white bg--green p1 my1">
-                        <p><strong>SUCCESS</strong>: {{ session('status') }}</p>
+        @if (session('status'))
+          <div class="card card-active mb-2">
+            <div class="card-body">
+              <p>{{ session('status') }}</p>
+            </div>
+          </div>
+        @endif
+
+        @if(!empty($errors))
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                  <div class="card mb-2">
+                    <div class="card-status-top bg-danger"></div>
+                    <div class="card-body">
+                      <p>{{ $error }}</p>
                     </div>
-                @endif
+                  </div>
+                @endforeach
+            @endif
+        @endif
 
-                @error('email')
-                <aside class="fnt--white bg--red p1 my1">
-                    <p><strong>ERROR</strong>: {{ $message }}</p>
-                </aside>
-                @enderror
-                @error('password')
-                <aside class="fnt--white bg--red p1 my1">
-                    <p><strong>ERROR</strong>: {{ $message }}</p>
-                </aside>
-                @enderror
+        <form class="card card-md" action="{{ route('password.email') }}" method="POST" autocomplete="off">
+          @csrf
 
-                <form method="POST" action="{{ route('password.email') }}" class="p2 brdr--mid-gray">
-                    @csrf
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4">{{ __('auth.forgot_password.title') }}</h2>
+            <div class="mb-3">
+              <label class="form-label">{{ __('auth.email') }}</label>
+              <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{ __('auth.email') }}" autocomplete="off" value="{{ old('email') }}">
 
-                    <label for="email">{{ __('auth.email') }}</label>
-                    <input type="email" name="email" placeholder="{{ __('auth.email') }}" value="{{ old('email') }}">
-
-                    <p class="txt--center">
-                        <button type="submit" class="btn--blue">{{ __('auth.forgot_password.send_pwd_reset') }}</button>
-                    </p>
-
-                    <p class="txt--center">
-                        <a href="{{ route("login") }}">{{ __('auth.sign_in') }}</a>
-                        <a href="{{ route("register") }}">{{ __('auth.registration.title') }}</a>
-                    </p>
-                </form>
+              @error('email')
+                <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
             </div>
-        </div>
 
-        <div class="footer grd-row-col-6 txt--center">
-            <p>Copyright &copy; 2022 <a href="{{ url('/') }}">{{ config('app.name') }}</a>. All rights reserved.</p>
+            <div class="form-footer">
+              <button type="submit" class="btn btn-primary w-100">{{ __('auth.forgot_password.send_pwd_reset') }}</button>
+            </div>
+          </div>
+        </form>
+        <div class="text-center text-muted mt-3">
+          {{ __('auth.registration.title') }} <a href="{{ route('register') }}" tabindex="-1">{{ __('auth.sign_in') }}</a>
         </div>
+        <div class="text-center text-muted mt-3">
+          {{ __('auth.registration.have_membership') }} <a href="{{ route('login') }}" tabindex="-1">{{ __('auth.login') }}</a>
+        </div>
+      </div>
     </div>
-
 <script src="{{ mix('js/app.js') }}"></script>
-
 </body>
 </html>
