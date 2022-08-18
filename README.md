@@ -9,7 +9,7 @@
 
 ## Documentation
 
-Read [Documentation](https://infyom.com/open-source/laravel-ui-tabler/docs) for detailed installation steps and usage.
+Read [Documentation](https://infyom.com/open-source/laravel-ui-adminlte/docs) for detailed installation steps and usage.
 
 ## Security
 
