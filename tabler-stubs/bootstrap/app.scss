@@ -4,3 +4,14 @@
 @import 'bootstrap';
 
 @import '@tabler/core/dist/css/tabler';
+
+.logout-btn{
+    position: relative;
+    bottom: 0;
+
+    a,
+    a:link, a:visited,
+    a:active{
+        color: white;
+    }
+}
