@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('title')
-    <span class="title">{{ __('dashboard') }}</span>
+    <span class="title">{{ __('Dashboard') }}</span>
 @endsection
 
 @section('content')
-    <h1>You are logged in!</h1>
+    <h1>@lang('You are logged in!')</h1>
 @endsection
