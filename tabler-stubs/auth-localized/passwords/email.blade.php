@@ -60,7 +60,7 @@
           {{ __('auth.registration.title') }} <a href="{{ route('register') }}" tabindex="-1">{{ __('auth.sign_in') }}</a>
         </div>
         <div class="text-center text-muted mt-3">
-          {{ __('auth.registration.have_membership') }} <a href="{{ route('login') }}" tabindex="-1">{{ __('auth.login') }}</a>
+          {{ __('auth.registration.have_membership') }} <a href="{{ route('login') }}" tabindex="-1">{{ __('auth.sign_in') }}</a>
         </div>
       </div>
     </div>
