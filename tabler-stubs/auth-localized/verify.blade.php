@@ -39,7 +39,7 @@
 
         <div class="card card-md">
           <div class="card-body">
-            <h2 class="card-title text-center mb-4">{{ __('auth.verify') }}</h2>
+            <h2 class="card-title text-center mb-4">{{ __('auth.verify_email.title') }}</h2>
             <p>{{ __('auth.verify_email.notice') }}
                 <a href="#"
                    onclick="event.preventDefault(); document.getElementById('resend-form').submit();">

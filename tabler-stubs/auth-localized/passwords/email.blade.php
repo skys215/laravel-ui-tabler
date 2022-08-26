@@ -57,7 +57,7 @@
           </div>
         </form>
         <div class="text-center text-muted mt-3">
-          {{ __('auth.registration.title') }} <a href="{{ route('register') }}" tabindex="-1">{{ __('auth.sign_in') }}</a>
+          {{ __('auth.registration.title') }} <a href="{{ route('register') }}" tabindex="-1">{{ __('auth.register') }}</a>
         </div>
         <div class="text-center text-muted mt-3">
           {{ __('auth.registration.have_membership') }} <a href="{{ route('login') }}" tabindex="-1">{{ __('auth.sign_in') }}</a>
