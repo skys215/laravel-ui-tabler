@@ -73,7 +73,7 @@
           </div>
         </form>
         <div class="text-center text-muted mt-3">
-          {{ __('auth.login.register_membership') }} <a href="{{ route('register') }}" tabindex="-1">{{ __('auth.sign_in') }}</a>
+          {{ __('auth.registration.title') }} <a href="{{ route('register') }}" tabindex="-1">{{ __('auth.sign_in') }}</a>
         </div>
         <div class="text-center text-muted mt-3">
           {{ __('auth.login.forgot_password') }} <a href="{{ route('password.request') }}" tabindex="-1">{{ __('auth.reset_password.reset_pwd_btn') }}</a>
