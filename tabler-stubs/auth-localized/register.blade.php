@@ -35,7 +35,7 @@
             <h2 class="card-title text-center mb-4">{{ __('auth.register') }}</h2>
 
             <div class="mb-3">
-              <label class="form-label">{{ __('auth.name') }}</label>
+              <label class="form-label">{{ __('auth.full_name') }}</label>
               <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="{{ __('auth.full_name') }}" autocomplete="off" value="{{ old('name') }}">
 
               @error('name')

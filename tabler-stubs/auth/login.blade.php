@@ -33,7 +33,7 @@
           @csrf
 
           <div class="card-body">
-            <h2 class="card-title text-center mb-4">{{ __('auth.subtitle') }}</h2>
+            <h2 class="card-title text-center mb-4">{{ __('auth.login.title') }}</h2>
             <div class="mb-3">
               <label class="form-label">{{ __('auth.email') }}</label>
               <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{ __('auth.email') }}" autocomplete="off" value="{{ old('email') }}">
